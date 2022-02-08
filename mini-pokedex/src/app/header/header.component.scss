@@ -1,0 +1,21 @@
+.box {
+  box-sizing: content-box;
+  width: 90%;
+  border: solid #5b6dcd 2px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+a {
+  padding: 10px;
+}
+.search {
+  border-radius: 50px;
+  padding-left: 10px;
+  margin: 4px;
+}
