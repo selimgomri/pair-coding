@@ -6,12 +6,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './list-pokemon.component.html',
   styleUrls: ['./list-pokemon.component.scss'],
 })
-export class ListPokemonComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+export class ListPokemonComponent{
+  pokemons: any[] = [];
+  constructor(private apiService: ApiService) {
 
-  ngOnInit(): void {}
-
-  fetchKantoPokemon() {
-    this.apiService.fetchKantoPokemon();
   }
+
+
+
+  async viewListPokemon(){
+    this.pokemons = await this.apiService.fetchKantoPokemon();
+    console.log(this.pokemons);
+  }
+
 }
