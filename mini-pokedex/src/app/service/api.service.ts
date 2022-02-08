@@ -11,13 +11,8 @@ export class ApiService {
     return fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
       .then((response) => response.json())
       .then((allpokemon) => {
-        allpokemon.results/*.forEach ((pokemon: any) => {
-          this.fetchPokemonData(pokemon);
-        });*/
+       return allpokemon.results
 
-        this.pokemons = allpokemon.results;
-        console.log(this.pokemons);
-        /*return allpokemon.results;*/
       });
 
   }
