@@ -19,4 +19,8 @@ export class ListPokemonComponent{
     console.log(this.pokemons);
   }
 
+  listPokemon() {
+    this.apiService.fetchKantoPokemon2();
+  }
+
 }
