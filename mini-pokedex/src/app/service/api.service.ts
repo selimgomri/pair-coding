@@ -1,13 +1,39 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of} from 'rxjs';
+import { Pokemon } from '../models/pokemon';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  pokemons: any[] = [];
-  constructor() {}
+  nextPokemonsUrl: string | undefined
+  pokemons: [] = [];
+  constructor(private httpClient: HttpClient) {}
 
-  fetchKantoPokemon(): Promise<any> {
+  getPokemonData(pokemon: Pokemon) {
+    return this.httpClient.get(pokemon.url)
+    .pipe(
+      catchError((error: any) => {
+        console.error(error);
+        return of({});
+      })
+    );
+  }
+
+  getPokemonList(): Observable<Pokemon[]> {
+    return this.httpClient
+      .get('https://pokeapi.co/api/v2/pokemon?limit=10')
+      .pipe(
+        catchError((error: any) => {
+          console.error(error);
+          return of([]);
+        }),
+        tap((response: any) => (this.nextPokemonsUrl = response.next)),
+        map((response: any) => response.results)
+      );
+  }
+  /*fetchKantoPokemon(): Promise<any> {
     return fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
       .then((response) => response.json())
       .then((allpokemon) => {
@@ -22,5 +48,5 @@ export class ApiService {
       .then((pokeData) => {
         console.log(pokeData);
       });
-  }
+  }*/
 }
