@@ -12,8 +12,6 @@ export class ListPokemonComponent{
 
   }
 
-
-
   async viewListPokemon(){
     this.pokemons = await this.apiService.fetchKantoPokemon();
     console.log(this.pokemons);
