@@ -8,6 +8,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { ListPokemonComponent } from './component/list-pokemon/list-pokemon.component';
 import { PokemonItemComponent } from './component/pokemon-item/pokemon-item.component';
 import { LoaderComponent } from './loader/loader.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoaderComponent } from './loader/loader.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
